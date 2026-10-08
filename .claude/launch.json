@@ -1,0 +1,15 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "figma-5-static",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": [
+        "-c",
+        "python3 -m http.server ${PORT:-3005}"
+      ],
+      "port": 3005,
+      "autoPort": true
+    }
+  ]
+}
