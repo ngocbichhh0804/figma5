@@ -1,0 +1,22 @@
+# Landing page — khung Tablet 768
+nav-logo     20,70,100,145     thr=250 light
+nav-menu     670,70,750,145    thr=250 light
+hero-title   20,310,560,700    thr=252 light rows
+about-title  20,890,560,960    thr=180 light
+about-text   20,985,560,1050   thr=150 light rows
+stats-num    20,1080,600,1135  thr=200 light
+stats-label  20,1140,600,1170  thr=150 light
+card-arrow   620,1350,716,1430 thr=248 light
+card-title   40,1855,700,1915  thr=120
+card-text    40,1925,700,1985  thr=120 rows
+small-title  420,2585,760,2630 thr=120
+small-text   420,2640,760,2720 thr=120 rows
+dots         300,2755,470,2785 thr=200 light
+gfx-title    20,2930,720,3045  thr=240 light
+quote        20,4240,750,4500  thr=245 light rows
+cta-pill     20,4860,760,5040  thr=150 light
+cta-title    210,4895,720,4960 thr=200 light
+cta-book     210,4970,405,5005 thr=200 light
+cta-arrow    405,4965,485,5005 thr=150 light
+social       270,5075,500,5115 thr=200 light
+copy         250,5125,520,5160 thr=200 light

@@ -1,0 +1,127 @@
+/* Section 2 "Meet Alex Johnsson": giới thiệu + 3 con số + 2 elip trang trí. */
+@layer components {
+  .about {
+    position: relative;
+    min-block-size: 466px;           /* [FIGMA] 1266 − 800 */
+    padding-block: 72px 0;           /* [ĐO] mobile */
+    overflow: clip;
+    background-color: var(--surface-dark);
+  }
+
+  /* Group 3 — 2 elip; định vị theo tâm khung để màn rộng vẫn đúng chỗ. */
+  .about__orbit {
+    position: absolute;
+    inset-block-start: 0;            /* [MẪU] mobile: phần elip thấy được, cắt từ khung Mobile */
+    inset-inline-end: 0;             /* bám mép phải → màn rộng hơn vẫn như elip chạy ra ngoài */
+    inline-size: 115px;              /* [FIGMA] 375 − 259.87 */
+    max-inline-size: none;
+    block-size: 466px;               /* [FIGMA] Section 2 */
+    pointer-events: none;
+  }
+
+  .about .container { position: relative; }
+
+  .about__title {
+    max-inline-size: 342px;          /* [FIGMA] mobile 342 → 2 dòng */
+    margin-inline-start: 0;          /* [ĐO] */
+    font-size: clamp(30px, 9.6vw, 36px); /* [FIGMA] mobile 36 ở 375 */
+    color: var(--color-lemon);
+  }
+
+  .about__text {
+    max-inline-size: 342px;          /* [FIGMA] mobile */
+    margin-block-start: 41px;        /* [ĐO] */
+    margin-inline-start: -1px;       /* [ĐO] */
+    font-size: 15px;                 /* [FIGMA] mobile */
+    line-height: 20px;               /* [FIGMA] 60 / 3 dòng */
+  }
+
+  .stats {
+    margin-block-start: 39px;        /* [ĐO] */
+    margin-inline-start: 0;          /* [ĐO] */
+    padding: 0;
+    font-size: 0;
+    list-style: none;
+  }
+
+  .stats__item {
+    display: inline-block;
+    inline-size: calc(100% * 118 / 343); /* [ĐO] mobile cột cách nhau 118 ở khung 375 */
+    vertical-align: top;
+  }
+
+  .stats__item:last-child { inline-size: auto; }
+
+  .stats__value {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: var(--weight-bold);
+    font-size: 36px;                 /* [FIGMA] mobile */
+    line-height: 43px;               /* [FIGMA] */
+  }
+
+  .stats__label {
+    display: block;
+    max-inline-size: 80px;           /* [FIGMA] 76 → 2 dòng như Figma */
+    margin-block-start: 4px;         /* [ĐO] */
+    font-weight: var(--weight-bold);
+    font-size: 16px;                 /* [FIGMA] */
+    line-height: 22px;               /* [FIGMA] */
+  }
+
+  @media (width >= 48rem) {
+    .about {
+      min-block-size: 470px;         /* [FIGMA] tablet 1266 − 796 */
+      padding-block: 103px 0;        /* [ĐO] tablet */
+    }
+
+    .about__orbit {
+      inset-block-start: -42px;      /* [FIGMA] tablet y 754 − 796 */
+      inset-inline-end: auto;
+      inset-inline-start: calc(50% + 129px); /* [FIGMA] tablet x 513 − 384 */
+      inline-size: 552px;            /* [FIGMA] 551.58 */
+      block-size: 553px;             /* [FIGMA] 552.04 */
+    }
+
+    .about__title {
+      max-inline-size: none;
+      margin-inline-start: 1px;
+      font-size: 48px;               /* [FIGMA] */
+    }
+
+    .about__text {
+      max-inline-size: 524px;        /* [FIGMA] */
+      margin-block-start: 38px;      /* [ĐO] */
+      margin-inline-start: 1px;
+      font-size: 16px;               /* [FIGMA] */
+      line-height: 22px;             /* [FIGMA] 44 / 2 dòng */
+    }
+
+    .stats {
+      margin-block-start: 41px;      /* [ĐO] */
+      margin-inline-start: 1px;      /* [ĐO] */
+    }
+
+    .stats__item { inline-size: 212px; } /* [ĐO] cột cách nhau 212 */
+
+    .stats__value {
+      font-size: 48px;               /* [FIGMA] */
+      line-height: 58px;             /* [FIGMA] */
+    }
+
+    .stats__label { max-inline-size: none; }
+  }
+
+  @media (width >= 64rem) {
+    .about {
+      min-block-size: 466px;         /* [ĐO] desktop 1266 − 800 */
+      padding-block-start: 99px;     /* [ĐO] */
+    }
+
+    .about__orbit {
+      inset-block-start: -47px;      /* [ĐO] desktop y 753 − 800 */
+      inset-inline-start: calc(50% + 316px); /* [ĐO] desktop x 1036 − 720 */
+    }
+
+  }
+}

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Alex Johnsson — Portfolio</title>
+    <meta name="description" content="Portfolio of Alex Johnsson: mobile apps, landing pages and graphic design." />
+
+    <!-- Thứ tự layer khai báo một lần; nhờ vậy không cần !important. -->
+    <style>
+      @layer reset, tokens, base, layout, components, utilities;
+    </style>
+
+    <link rel="preload" href="assets/fonts/dynapuff-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="assets/fonts/manrope-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin />
+
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/fonts.css" />
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components/site-header.css" />
+    <link rel="stylesheet" href="css/components/hero.css" />
+    <link rel="stylesheet" href="css/components/about.css" />
+    <link rel="stylesheet" href="css/components/projects.css" />
+    <link rel="stylesheet" href="css/components/graphics.css" />
+    <link rel="stylesheet" href="css/components/quote.css" />
+    <link rel="stylesheet" href="css/components/site-footer.css" />
+    <link rel="stylesheet" href="css/utilities.css" />
+  </head>
+
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <!-- Khung Figma "Desktop" 1440 × 5406, "Tablet" 768 × 5186, "Mobile" 375 × 4572 -->
+    <div class="page page--home">
+      <header class="site-header">
+        <div class="site-header__inner container">
+          <a class="site-header__logo" href="#main">
+            <img src="assets/icon/logo-hope.png" width="56" height="56" alt="Alex Johnsson — home" />
+          </a>
+
+          <!-- Menu thu gọn (mobile/tablet): checkbox + :has(), không JS.
+               Từ 64rem trở lên ô bật/tắt bị ẩn và danh sách luôn hiện. -->
+          <nav class="site-nav" aria-label="Main">
+            <input class="site-nav__toggle visually-hidden" type="checkbox" id="nav-toggle" />
+            <label class="site-nav__button" for="nav-toggle">
+              <img src="assets/icon/menu-button.png" width="56" height="56" alt="" />
+              <span class="visually-hidden">Menu</span>
+            </label>
+
+            <ul class="site-nav__list" role="list">
+              <li class="site-nav__item">
+                <a class="site-nav__link" href="#projects">
+                  <img class="site-nav__icon" src="assets/icon/nav-portfolio.png" width="16" height="16" alt="" />Portfolio
+                </a>
+              </li>
+              <li class="site-nav__item">
+                <a class="site-nav__link" href="#about">
+                  <img class="site-nav__icon" src="assets/icon/nav-resume.png" width="16" height="16" alt="" />Resume
+                </a>
+              </li>
+              <li class="site-nav__item">
+                <a class="site-nav__link" href="#quote">
+                  <img class="site-nav__icon" src="assets/icon/nav-testimonials.png" width="16" height="16" alt="" />Testimonials
+                </a>
+              </li>
+              <li class="site-nav__item">
+                <a class="site-nav__link" href="#contact">
+                  <img class="site-nav__icon" src="assets/icon/nav-contact.png" width="16" height="16" alt="" />Contact
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <main id="main">
+        <section class="hero">
+          <div class="container">
+            <h1 class="hero__title">Unleash Creativity Through Minimalism.</h1>
+          </div>
+        </section>
+
+        <section class="about" id="about" aria-labelledby="about-title">
+          <picture>
+            <source media="(width >= 48rem)" srcset="assets/img/orbit.png" width="552" height="553" />
+            <img class="about__orbit" src="assets/img/orbit-mobile@2x.png" width="115" height="466" alt="" />
+          </picture>
+          <div class="container">
+            <h2 class="about__title" id="about-title">Meet Alex Johnsson</h2>
+            <p class="about__text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
+            </p>
+            <ul class="stats" role="list">
+              <li class="stats__item"><strong class="stats__value">39</strong> <span class="stats__label">Happy Clients</span></li>
+              <li class="stats__item"><strong class="stats__value">50</strong> <span class="stats__label">Sleek Projects</span></li>
+              <li class="stats__item"><strong class="stats__value">24</strong> <span class="stats__label">App Designs</span></li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="projects" id="projects" aria-labelledby="projects-title">
+          <h2 class="visually-hidden" id="projects-title">Projects</h2>
+
+          <div class="container">
+            <article class="project project--featured">
+              <div class="project__media">
+                <!-- Ảnh cắt từ từng khung Figma (đã gồm nút mũi tên). -->
+                <picture>
+                  <source media="(width >= 64rem)" srcset="assets/img/project-banking-desktop@2x.jpg 2x" width="1010" height="498" />
+                  <source media="(width >= 48rem)" srcset="assets/img/project-banking-tablet@2x.jpg 2x" width="663" height="498" />
+                  <img class="project__img" src="assets/img/project-banking-mobile@2x.jpg" width="311" height="278"
+                       alt="Two phones showing the Byte sign-in screen and the Spotlight feed" />
+                </picture>
+              </div>
+              <h3 class="project__title"><a class="project__link" href="#projects">Project: Banking Mobile App</a></h3>
+              <p class="project__text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
+              </p>
+            </article>
+          </div>
+
+          <!-- Dải thẻ cuộn ngang (scroll-snap), không JS. Bàn phím: Tab vào rồi dùng phím mũi tên. -->
+          <div class="carousel" tabindex="0" role="region" aria-label="More projects">
+            <ul class="carousel__track" role="list">
+              <li class="carousel__slide">
+                <article class="project">
+                  <div class="project__media project__media--partial project__media--fan">
+                    <img class="project__img project__img--end" src="assets/img/project-mobile-app-crop.png" width="216" height="448"
+                         alt="Purple 3D fan render" />
+                  </div>
+                  <h3 class="project__title"><a class="project__link" href="#projects">Banking Mobile App</a></h3>
+                  <p class="project__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+                </article>
+              </li>
+              <li class="carousel__slide carousel__slide--anchor-m">
+                <article class="project">
+                  <div class="project__media">
+                    <picture>
+                      <source media="(width >= 48rem)" srcset="assets/img/project-save-planet.png" width="384" height="448" />
+                      <img class="project__img project__img--fill" src="assets/img/project-save-planet-mobile@2x.png" width="319" height="363"
+                           alt="Phone showing the Save the planet sign-up screen" />
+                    </picture>
+                  </div>
+                  <h3 class="project__title"><a class="project__link" href="#projects">Save Planet Mobile app</a></h3>
+                  <p class="project__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+                </article>
+              </li>
+              <li class="carousel__slide carousel__slide--anchor">
+                <article class="project">
+                  <div class="project__media">
+                    <img class="project__img" src="assets/img/project-health.png" width="384" height="448"
+                         alt="Desktop computer showing a health landing page" />
+                  </div>
+                  <h3 class="project__title"><a class="project__link" href="#projects">Health Landing page</a></h3>
+                  <p class="project__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+                </article>
+              </li>
+              <li class="carousel__slide">
+                <article class="project">
+                  <div class="project__media project__media--partial project__media--sphere">
+                    <img class="project__img project__img--start" src="assets/img/project-banking-crop.png" width="216" height="448"
+                         alt="Pastel gradient sphere" />
+                  </div>
+                  <h3 class="project__title"><a class="project__link" href="#projects">Banking Mobile App</a></h3>
+                  <p class="project__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+                </article>
+              </li>
+            </ul>
+          </div>
+
+          <p class="dots" aria-hidden="true">
+            <span class="dots__item dots__item--active"></span><span class="dots__item"></span><span class="dots__item"></span>
+          </p>
+        </section>
+
+        <section class="graphics" aria-labelledby="graphics-title">
+          <div class="container">
+            <h2 class="graphics__title" id="graphics-title">Graphics Design</h2>
+            <div class="graphics__board">
+              <!-- Mỗi khung Figma cắt ảnh khác nhau → mỗi khổ một ảnh riêng.
+                   Ảnh tablet/mobile cắt từ export Figma, đã gồm hình trang trí. -->
+              <picture>
+                <source media="(width >= 64rem)" srcset="assets/img/graphics-newspaper.png" width="1055" height="414" />
+                <source media="(width >= 30rem)" srcset="assets/img/graphics-newspaper-tablet@2x.png 2x" width="704" height="414" />
+                <img class="graphics__img graphics__img--wide" src="assets/img/graphics-newspaper-mobile@2x.png" width="343" height="325"
+                     alt="Hand holding the Good Newspaper with bold geometric illustrations" />
+              </picture>
+              <picture>
+                <source media="(width >= 64rem)" srcset="assets/img/graphics-arch.png 1x, assets/img/graphics-arch@2x.png 2x" width="514" height="414" />
+                <source media="(width >= 30rem)" srcset="assets/img/graphics-arch-tablet@2x.png 2x" width="336" height="325" />
+                <img class="graphics__img graphics__img--left" src="assets/img/graphics-arch-mobile@2x.png" width="343" height="325"
+                     alt="Curved concrete arches seen from below" />
+              </picture>
+              <picture>
+                <source media="(width >= 64rem)" srcset="assets/img/graphics-wall.png 1x, assets/img/graphics-wall@2x.png 2x" width="514" height="414" />
+                <source media="(width >= 30rem)" srcset="assets/img/graphics-wall-tablet@2x.png 2x" width="334" height="325" />
+                <img class="graphics__img graphics__img--right" src="assets/img/graphics-wall-mobile@2x.png" width="343" height="325"
+                     alt="Painted wall with the words “mi have een droom”" />
+              </picture>
+              <img class="graphics__shape graphics__shape--star" src="assets/img/shape-star.png" width="268" height="268" alt="" />
+              <img class="graphics__shape graphics__shape--butterfly" src="assets/img/shape-butterfly.png" width="187" height="192" alt="" />
+              <img class="graphics__shape graphics__shape--asterisk" src="assets/img/shape-asterisk.png" width="233" height="225" alt="" />
+            </div>
+          </div>
+        </section>
+
+        <section class="quote" id="quote" aria-label="Testimonial">
+          <div class="container">
+            <blockquote class="quote__text">
+              <p>“Good design is like a refrigerator - when it works, no one notices, but when it doesn't, it sure stinks.”</p>
+            </blockquote>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer" id="contact">
+        <div class="container">
+          <a class="cta" href="mailto:hello@example.com">
+            <picture>
+              <source media="(width >= 48rem)" srcset="assets/img/cta-dawn.png" width="108" height="108" />
+              <img class="cta__icon" src="assets/img/cta-dawn-mobile@2x.png" width="54" height="53" alt="" />
+            </picture>
+            <span class="cta__body">
+              <span class="cta__title">Have a new project?</span>
+              <span class="cta__action">Book a call now<img class="cta__arrow" src="assets/icon/arrow-long.png" width="57" height="28" alt="" /></span>
+            </span>
+          </a>
+
+          <ul class="social" role="list">
+            <li class="social__item"><a class="social__link" href="#contact"><img src="assets/icon/social-twitch.png" width="24" height="24" alt="Twitch" /></a></li>
+            <li class="social__item"><a class="social__link" href="#contact"><img src="assets/icon/social-twitter.png" width="24" height="24" alt="Twitter" /></a></li>
+            <li class="social__item"><a class="social__link" href="#contact"><img src="assets/icon/social-instagram.png" width="24" height="24" alt="Instagram" /></a></li>
+            <li class="social__item"><a class="social__link" href="#contact"><img src="assets/icon/social-linkedin.png" width="24" height="24" alt="LinkedIn" /></a></li>
+          </ul>
+
+          <p class="site-footer__copy">Copyright © 2023 Syeda Urooj</p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

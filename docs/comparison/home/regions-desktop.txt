@@ -1,0 +1,22 @@
+# Landing page — khung Desktop 1440
+nav-logo     180,70,260,145    thr=250 light
+nav-pills    470,80,1090,135   thr=240 light
+hero-title   150,520,1100,740  thr=252 light rows
+about-title  150,880,750,960   thr=180 light
+about-text   150,985,700,1050  thr=150 light rows
+stats-num    150,1080,750,1135 thr=200 light
+stats-label  150,1140,750,1170 thr=150 light
+card-arrow   1130,1350,1225,1430 thr=248 light
+card-title   200,1855,800,1915 thr=120
+card-text    200,1925,800,1985 thr=120 rows
+small-title  290,2585,700,2630 thr=120
+small-text   290,2640,700,2720 thr=120 rows
+dots         600,2755,840,2785 thr=200 light
+gfx-title    150,2930,900,3045 thr=240 light
+quote        150,4370,1300,4560 thr=245 light rows
+cta-pill     240,4940,1200,5160 thr=150 light
+cta-title    540,4990,1060,5060 thr=200 light
+cta-book     540,5070,735,5105 thr=200 light
+cta-arrow    735,5065,815,5105 thr=150 light
+social       600,5300,840,5340 thr=200 light
+copy         590,5350,850,5385 thr=200 light

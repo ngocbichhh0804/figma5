@@ -1,0 +1,32 @@
+{
+  "name": "Figma 5",
+  "pages": [
+    {
+      "slug": "home",
+      "label": "Landing page — Desktop",
+      "file": "index.html",
+      "w": 1440,
+      "h": 5406,
+      "overlay": "home-desktop-overlay.html",
+      "img": "home/home-desktop-figma.png"
+    },
+    {
+      "slug": "home-tablet",
+      "label": "Landing page — Tablet",
+      "file": "index.html",
+      "w": 768,
+      "h": 5186,
+      "overlay": "home-tablet-overlay.html",
+      "img": "home/home-tablet-figma.png"
+    },
+    {
+      "slug": "home-mobile",
+      "label": "Landing page — Mobile",
+      "file": "index.html",
+      "w": 375,
+      "h": 4572,
+      "overlay": "home-mobile-overlay.html",
+      "img": "home/home-mobile-figma.png"
+    }
+  ]
+}

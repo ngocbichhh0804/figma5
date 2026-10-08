@@ -1,0 +1,17 @@
+/* Thiết lập mặc định cho thẻ và nhịp chữ. Cố ý không dùng class ở đây. */
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    font-weight: var(--weight-medium);
+    font-size: 16px;                 /* [FIGMA] */
+    line-height: 1.375;              /* [ĐO] 16/22 */
+    color: var(--text-primary);
+    background-color: var(--surface-page);
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: var(--weight-bold);
+    line-height: 1.2;                /* [ĐO] khoảng cách dòng = 1.2 × cỡ chữ ở mọi tiêu đề */
+  }
+}

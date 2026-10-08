@@ -1,0 +1,47 @@
+/* Hero: nền gradient vàng → xám + tiêu đề lớn.
+   Gradient Figma tính theo khung chữ nhật (đổi theo bề ngang), CSS
+   linear-gradient lại tính theo góc tuyệt đối → dùng SVG kéo giãn 100% × 100%
+   (gradient objectBoundingBox) để đúng ở mọi khổ. Hệ số dò bằng đo pixel. */
+@layer components {
+  .hero {
+    min-block-size: 800px;           /* [FIGMA] Section 1 — 800 (mobile, desktop) */
+    padding-block: 467px 72px;       /* [ĐO] mobile */
+    background-color: var(--color-yellow);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1' preserveAspectRatio='none'%3E%3ClinearGradient id='g' x1='-0.501' y1='0.5' x2='1.199' y2='0.001'%3E%3Cstop offset='0' stop-color='%23d6d6d6'/%3E%3Cstop offset='1' stop-color='%23ffee32'/%3E%3C/linearGradient%3E%3Crect width='1' height='1' fill='url(%23g)'/%3E%3C/svg%3E"); /* [FIGMA] màu #D6D6D6 → #FFEE32, [ĐO] hướng */
+    background-size: 100% 100%;
+  }
+
+  .hero__title {
+    max-inline-size: 326px;          /* [FIGMA] mobile 326 */
+    margin-inline-start: 5px;        /* [FIGMA] mobile x 21 = 16 + 5 */
+    font-size: clamp(34px, 12.8vw, 48px); /* [FIGMA] mobile 48 ở 375; [ƯỚC] co lại dưới 375 */
+    line-height: 1.2;                /* [ĐO] */
+    color: var(--color-white);
+    overflow-wrap: break-word;
+  }
+
+  @media (width >= 48rem) {
+    .hero {
+      min-block-size: 796px;         /* [FIGMA] tablet Rectangle 1 — 796 */
+      padding-block: 315px 72px;     /* [ĐO] */
+    }
+
+    .hero__title {
+      max-inline-size: 521px;        /* [FIGMA] tablet 521 */
+      margin-inline-start: 1px;      /* [FIGMA] tablet x 33 */
+      font-size: 80px;               /* [FIGMA] */
+    }
+  }
+
+  @media (width >= 64rem) {
+    .hero {
+      min-block-size: 800px;         /* [ĐO] desktop Section 2 bắt đầu y 800 */
+      padding-block: 530px 72px;     /* [ĐO] */
+    }
+
+    .hero__title {
+      max-inline-size: 900px;        /* [ĐO] ngắt dòng sau "Creativity" */
+      margin-inline-start: 1px;      /* [ĐO] nét chữ x 192 */
+    }
+  }
+}

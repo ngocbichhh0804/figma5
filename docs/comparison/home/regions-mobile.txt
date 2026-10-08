@@ -1,0 +1,21 @@
+# Landing page — khung Mobile 375
+nav-logo     8,70,90,145       thr=250 light
+nav-menu     290,70,370,145    thr=250 light
+hero-title   10,460,360,700    thr=252 light rows
+about-title  8,870,360,960     thr=180 light rows
+about-text   8,995,360,1065    thr=150 light rows
+stats-num    8,1100,360,1140   thr=200 light
+stats-label  8,1145,360,1195   thr=150 light
+card-arrow   250,1340,343,1420 thr=248 light
+card-title   25,1630,350,1700  thr=120 rows
+card-text    25,1715,350,1790  thr=120 rows
+small-title  25,2245,355,2285  thr=120
+small-text   25,2295,355,2365  thr=120 rows
+dots         140,2395,240,2420 thr=200 light
+gfx-title    8,2525,360,2585   thr=240 light
+quote        8,3900,370,4065   thr=245 light rows
+cta-pill     8,4275,368,4365   thr=150 light
+cta-title    110,4292,340,4322 thr=200 light
+cta-book     110,4322,240,4345 thr=200 light
+social       70,4460,305,4500  thr=200 light
+copy         70,4508,305,4540  thr=200 light

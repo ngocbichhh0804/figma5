@@ -1,0 +1,161 @@
+/* Footer (Section 6): nút CTA viên thuốc, mạng xã hội, bản quyền. */
+@layer components {
+  .site-footer {
+    padding-block: 53px 40px;        /* [FIGMA] mobile 4230 → 4283; 4532 → 4572 */
+    text-align: center;
+    background-color: var(--surface-dark);
+  }
+
+  /* ---------- CTA ---------- */
+  .cta {
+    --cta-icon: 54px;                /* [MẪU] Dawn mobile cắt 54 × 53 từ khung Mobile */
+
+    position: relative;
+    display: block;
+    inline-size: 342px;              /* [FIGMA] mobile Frame 29 342 × 72 */
+    max-inline-size: 100%;
+    min-block-size: 72px;
+    margin-inline-start: max(0px, (100% - 342px) / 2 - 0.5px); /* [ĐO] x 16 ở 375; [ƯỚC] canh giữa khi màn rộng hơn */
+    padding: 11px 16px 10px clamp(86px, 28vw, 105px); /* [ĐO] chữ x 122 ở 375; [ƯỚC] co lại dưới 375 */
+    text-align: start;
+    border: 1px solid var(--color-gray-6);
+    border-radius: var(--radius-pill);
+  }
+
+  .cta:hover { background-color: rgb(255 255 255 / 0.06); }
+
+  .cta__icon {
+    position: absolute;
+    inset-block-start: 9px;          /* [MẪU] ảnh cắt từ y 4293 */
+    inset-inline-start: clamp(19px, 8.533vw, 32px); /* [MẪU] ảnh cắt từ x 50 ở 375 */
+    inline-size: var(--cta-icon);
+    block-size: auto;
+  }
+
+  .cta__body { display: block; }
+
+  .cta__title {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: var(--weight-bold);
+    font-size: clamp(17px, 5.34vw, 20px); /* [FIGMA] mobile 20 ở 375 */
+    line-height: 24px;               /* [FIGMA] 203 × 24 */
+  }
+
+  .cta__action {
+    display: block;
+    margin-block-start: 5px;         /* [ĐO] */
+    font-size: 15px;                 /* [FIGMA] mobile */
+    line-height: 20px;               /* [FIGMA] 107 × 20 */
+    white-space: nowrap;
+  }
+
+  .cta__arrow {
+    display: inline-block;
+    inline-size: 34px;               /* [ĐO] mobile 34 × 16 */
+    block-size: auto;
+    position: relative;
+    inset-block-start: -2px;         /* [ĐO] mobile y 4325 */
+    margin-block: -8px;              /* không làm dòng cao thêm */
+    margin-inline-start: 25px;       /* [ĐO] mobile x 253 */
+    vertical-align: middle;
+  }
+
+  /* ---------- Mạng xã hội ---------- */
+  .social {
+    margin-block-start: 113px;       /* [ĐO] mobile 4355 → 4468 */
+    padding: 0;
+    font-size: 0;
+    line-height: 0;
+    list-style: none;
+  }
+
+  .social__item { display: inline-block; }
+
+  .social__item + .social__item { margin-inline-start: 34px; } /* [ĐO] tâm cách nhau 58 */
+
+  .social__link {
+    position: relative;
+    display: block;
+    border-radius: 4px;
+  }
+
+  .social__link img { inline-size: 24px; block-size: 24px; } /* [FIGMA] 24 × 24 */
+
+  /* Vùng bấm 44 px trên màn cảm ứng mà không đổi giao diện. */
+  @media (pointer: coarse) {
+    .social__link::after {
+      content: "";
+      position: absolute;
+      inset: -10px;
+    }
+  }
+
+  .site-footer__copy {
+    margin-block-start: 21px;        /* [ĐO] icon → bản quyền, cả 3 khung */
+    font-size: 14px;                 /* [FIGMA] mobile */
+    line-height: 19px;               /* [FIGMA] 198 × 19 */
+  }
+
+  @media (width >= 48rem) {
+    .site-footer { padding-block: 96px 35px; } /* [FIGMA] tablet 4778 → 4874; 5151 → 5186 */
+
+    .cta {
+      --cta-icon: 108px;             /* [FIGMA] Dawn 108 × 108 */
+
+      inline-size: 714px;            /* [FIGMA] tablet Frame 29 714 × 150 */
+      max-inline-size: none;
+      min-block-size: 150px;
+      margin-inline-start: max(0px, (100% - 714px) / 2); /* [FIGMA] x 32 ở 768; [ƯỚC] canh giữa khi rộng hơn */
+      padding: 21px 16px 19px 189px; /* [ĐO] chữ x 222 */
+    }
+
+    .cta__icon {
+      inset-block-start: 20px;       /* [ĐO] y 4895 − 4874 − 1 */
+      inset-inline-start: 36px;      /* [ĐO] x 69 − 32 − 1 */
+    }
+
+    .cta__title {
+      font-size: 48px;               /* [FIGMA] */
+      line-height: 58px;             /* [FIGMA] 487 × 58 */
+    }
+
+    .cta__action {
+      margin-block-start: 16px;      /* [ĐO] */
+      font-size: 24px;               /* [FIGMA] */
+      line-height: 33px;             /* [FIGMA] 170 × 33 */
+    }
+
+    .cta__arrow {
+      inset-block-start: -3px;       /* [ĐO] */
+      inline-size: 57px;             /* [MẪU] Group 2 57 × 28 */
+      margin-inline-start: 24px;     /* [FIGMA] Frame 28 gap 24 */
+    }
+
+    .social { margin-block-start: 60px; } /* [ĐO] tablet 5024 → 5084 */
+
+    .site-footer__copy {
+      font-size: 16px;               /* [FIGMA] */
+      line-height: 22px;             /* [FIGMA] 226 × 22 */
+    }
+  }
+
+  @media (width >= 64rem) {
+    .site-footer { padding-block: 78px 30px; } /* [ĐO] desktop 4876 → 4954 */
+
+    .cta {
+      inline-size: calc(100% - 146px); /* [ĐO] 914 ở container 1060 */
+      max-inline-size: 914px;
+      min-block-size: 192px;         /* [ĐO] */
+      margin-inline: auto;
+      padding: 42px 16px 40px 289px; /* [ĐO] chữ x 552 */
+    }
+
+    .cta__icon {
+      inset-block-start: 41px;       /* [FIGMA] */
+      inset-inline-start: 135px;     /* [ĐO] x 400 − 264 − 1 */
+    }
+
+    .social { margin-block-start: 163px; } /* [ĐO] 5146 → 5309 */
+  }
+}

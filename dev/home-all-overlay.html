@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Overlay — Figma 5 Landing page — 3 khổ vs Figma</title>
+<style>
+  /* Công cụ nội bộ: đặt 3 khung Figma (Desktop 1440, Tablet 768, Mobile 375)
+     cạnh nhau, mỗi khung nạp index.html vào iframe đúng bề ngang rồi đè ảnh
+     Figma lên. Không JavaScript: chế độ và mức thu phóng là radio + :has().
+     Thu phóng dùng `zoom` nên iframe vẫn giữ đúng bề ngang CSS của khung
+     (media query không đổi). File viết tay, không sinh từ pages.json. */
+  * { box-sizing: border-box; }
+  body { margin: 0; padding-block-start: 42px; background: #1e1e1e; font: 14px/1.4 system-ui, sans-serif; color: #eee; }
+
+  .bar {
+    position: fixed; inset-block-start: 0; inset-inline: 0; z-index: 10;
+    padding: 10px 16px; background: #111; border-block-end: 1px solid #333; white-space: nowrap;
+  }
+  .bar strong { font-weight: 600; margin-inline-end: 8px; }
+  .bar label { margin-inline-start: 16px; cursor: pointer; }
+  .bar label input { vertical-align: middle; margin-inline-end: 6px; }
+  .bar .sep { display: inline-block; inline-size: 1px; block-size: 16px; margin-inline-start: 16px; vertical-align: middle; background: #444; }
+  .bar a { color: #9cf; margin-inline-start: 16px; }
+
+  .board { padding: 24px; white-space: nowrap; font-size: 0; }
+  .col { display: inline-block; vertical-align: top; margin-inline-end: 40px; zoom: .5; }
+  .col h2 { margin: 0 0 12px; font: 600 28px/1.2 system-ui, sans-serif; color: #ccc; }
+
+  .stage { position: relative; }
+  .stage iframe { display: block; border: 0; }
+  .ov { position: absolute; inset: 0; pointer-events: none; opacity: .5; }
+  .ov img { display: block; max-width: none; }
+
+  .col--d .stage, .col--d iframe, .col--d img { width: 1440px; }
+  .col--d iframe { height: 5406px; }
+  .col--t .stage, .col--t iframe, .col--t img { width: 768px; }
+  .col--t iframe { height: 5186px; }
+  .col--m .stage, .col--m iframe, .col--m img { width: 375px; }
+  .col--m iframe { height: 4572px; }
+
+  body:has(#m-build:checked) .ov { opacity: 0; }
+  body:has(#m-50:checked)    .ov { opacity: .5; }
+  body:has(#m-figma:checked) .ov { opacity: 1; }
+  body:has(#m-diff:checked)  .ov { opacity: 1; mix-blend-mode: difference; }
+
+  body:has(#z-100:checked) .col { zoom: 1; }
+  body:has(#z-50:checked)  .col { zoom: .5; }
+  body:has(#z-33:checked)  .col { zoom: .33; }
+</style>
+</head>
+<body>
+  <div class="bar">
+    <strong>Figma 5 — Landing page (3 khổ)</strong>
+    <label><input type="radio" name="m" id="m-build" />Code only</label>
+    <label><input type="radio" name="m" id="m-50" checked />Overlay 50%</label>
+    <label><input type="radio" name="m" id="m-figma" />Figma only</label>
+    <label><input type="radio" name="m" id="m-diff" />Difference</label>
+    <span class="sep"></span>
+    <label><input type="radio" name="z" id="z-100" />100%</label>
+    <label><input type="radio" name="z" id="z-50" checked />50%</label>
+    <label><input type="radio" name="z" id="z-33" />33%</label>
+    <span class="sep"></span>
+    <a href="home-desktop-overlay.html">Desktop</a>
+    <a href="home-tablet-overlay.html">Tablet</a>
+    <a href="home-mobile-overlay.html">Mobile</a>
+  </div>
+
+  <div class="board">
+    <section class="col col--d">
+      <h2>Desktop 1440 × 5406</h2>
+      <div class="stage">
+        <iframe src="../index.html" title="Code build — Desktop" scrolling="no"></iframe>
+        <div class="ov"><img src="../docs/comparison/home/home-desktop-figma.png" alt="Figma — Desktop" /></div>
+      </div>
+    </section>
+    <section class="col col--t">
+      <h2>Tablet 768 × 5186</h2>
+      <div class="stage">
+        <iframe src="../index.html" title="Code build — Tablet" scrolling="no"></iframe>
+        <div class="ov"><img src="../docs/comparison/home/home-tablet-figma.png" alt="Figma — Tablet" /></div>
+      </div>
+    </section>
+    <section class="col col--m">
+      <h2>Mobile 375 × 4572</h2>
+      <div class="stage">
+        <iframe src="../index.html" title="Code build — Mobile" scrolling="no"></iframe>
+        <div class="ov"><img src="../docs/comparison/home/home-mobile-figma.png" alt="Figma — Mobile" /></div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

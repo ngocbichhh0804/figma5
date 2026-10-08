@@ -1,0 +1,56 @@
+/* =========================================================================
+   Design token — Figma 5 (Free Portfolio Landing Page Template)
+
+   File này chỉ chứa giá trị DÙNG CHUNG: bảng màu, font, thang độ đậm,
+   chuyển động, bo góc. Số đo riêng của từng component ghi thẳng trong file
+   component đó, kèm nhãn nguồn gốc bên cạnh:
+
+   [FIGMA]  đọc thẳng từ panel inspector của Figma
+   [ĐO]     đo từ ảnh export của bản thiết kế (thu về 1x)
+   [MẪU]    lấy từ file asset được cung cấp
+   [ƯỚC]    ước lượng, còn chờ xác nhận lại trong Figma
+
+   Ba khung Figma: Mobile 375, Tablet 768, Desktop 1440.
+   ========================================================================= */
+@layer tokens {
+  :root {
+    /* ---------- Màu: giá trị gốc ---------- */
+    --color-yellow: #ffee32;         /* [FIGMA] gradient hero, chấm carousel đang chọn */
+    --color-silver: #d6d6d6;         /* [FIGMA] đầu xám của gradient hero              */
+    --color-lemon: #faeb49;          /* [FIGMA] tiêu đề "Meet Alex Johnsson"          */
+    --color-charcoal: #202020;       /* [FIGMA] nền Section 2, 4, 6                    */
+    --color-graphite: #3c3c3c;       /* [ĐO]    nền Section 3 (dự án)                  */
+    --color-cream: #fffef2;          /* [FIGMA] nền thẻ dự án, chấm carousel           */
+    --color-slate: #565656;          /* [FIGMA] tiêu đề thẻ dự án                      */
+    --color-line: #737373;           /* [FIGMA] viền 2 elip trang trí (Group 3)        */
+    --color-gray-6: #f2f2f2;         /* [FIGMA] Gray 6 — viền nút CTA                  */
+    --color-black: #000000;
+    --color-white: #ffffff;
+
+    /* ---------- Màu: theo ngữ nghĩa ---------- */
+    --surface-page: var(--color-charcoal);
+    --surface-dark: var(--color-charcoal);
+    --surface-projects: var(--color-graphite);
+    --surface-card: var(--color-cream);
+    --text-primary: var(--color-white);
+    --text-card-title: var(--color-slate);
+    --text-card-body: var(--color-black);
+    --accent-stroke: var(--color-yellow);
+
+    /* ---------- Chữ ---------- */
+    --font-display: "DynaPuff", system-ui, sans-serif;   /* [FIGMA] DynaPuff — OFL */
+    --font-sans: "Manrope", system-ui, sans-serif;       /* [FIGMA] Manrope — OFL  */
+
+    --weight-medium: 500;            /* [FIGMA] */
+    --weight-semibold: 600;          /* [FIGMA] */
+    --weight-bold: 700;              /* [FIGMA] */
+
+    /* ---------- Hình khối, chuyển động ---------- */
+    --radius-card: 24px;             /* [FIGMA] Frame 18/20/23 */
+    --radius-media: 13px;            /* [FIGMA] Frame 17 — ảnh trong thẻ */
+    --radius-graphic: 40px;          /* [FIGMA] ảnh Graphics Design */
+    --radius-pill: 139px;            /* [FIGMA] Frame 29 */
+    --duration-fast: 160ms;
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}

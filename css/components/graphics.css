@@ -1,0 +1,172 @@
+/* Section 4 "Graphics Design": 3 ảnh bo góc + 3 hình trang trí đè lên.
+   Hình trang trí định vị theo % của bảng ảnh (bảng giữ tỉ lệ) nên vẫn rơi
+   đúng chỗ khi bảng co lại; ở khung Figma các % này ra đúng số px. */
+@layer components {
+  .graphics {
+    min-block-size: 1260px;          /* [FIGMA] mobile 3732 − 2472 */
+    padding-block: 53px 0;           /* [ĐO] */
+    background-color: var(--surface-dark);
+  }
+
+  .graphics__title {
+    margin-inline-start: 0;          /* [FIGMA] mobile x 16 */
+    font-size: clamp(30px, 9.6vw, 36px); /* [FIGMA] mobile 36 ở 375 */
+    line-height: 54px;               /* [FIGMA] 327 × 54 */
+  }
+
+  .graphics__board {
+    --board-w: 343;                  /* [FIGMA] mobile */
+    --board-h: 1027;                 /* [FIGMA] 325 + 20 + 325 + 32 + 325 */
+
+    position: relative;
+    display: flow-root;
+    margin-block-start: 33px;        /* [ĐO] ảnh y 2612 */
+  }
+
+  .graphics__img {
+    display: block;
+    inline-size: 100%;
+    block-size: auto;
+    aspect-ratio: 343 / 325;         /* [FIGMA] mobile */
+    object-fit: cover;
+    border-radius: var(--radius-graphic);
+  }
+
+  .graphics__img--left { margin-block-start: 20px; }  /* [FIGMA] 2937 → 2957 */
+  .graphics__img--right { margin-block-start: 32px; } /* [FIGMA] 3282 → 3314 */
+
+  /* Hình trang trí rời chỉ dùng ở desktop; ảnh tablet/mobile đã có sẵn hình. */
+  .graphics__shape {
+    display: none;
+    position: absolute;
+    max-inline-size: none;
+    block-size: auto;
+    pointer-events: none;
+  }
+
+  .graphics__shape--star {           /* [FIGMA] Soft Star 172 tại (102, 2689) */
+    inset-inline-start: calc(100% * 86 / var(--board-w));
+    inset-block-start: calc(100% * 77 / var(--board-h));
+    inline-size: calc(100% * 172 / var(--board-w));
+  }
+
+  .graphics__shape--butterfly {      /* [FIGMA] Butterfly 134 × 137 tại (121, 3051) */
+    inset-inline-start: calc(100% * 105 / var(--board-w));
+    inset-block-start: calc(100% * 439 / var(--board-h));
+    inline-size: calc(100% * 134 / var(--board-w));
+  }
+
+  .graphics__shape--asterisk {       /* [FIGMA] Asterisk 148 × 143 tại (114, 3405) */
+    inset-inline-start: calc(100% * 98 / var(--board-w));
+    inset-block-start: calc(100% * 793 / var(--board-h));
+    inline-size: calc(100% * 148 / var(--board-w));
+  }
+
+  /* Từ 30rem (điện thoại ngang, tablet nhỏ): dùng cách xếp của khung Tablet
+     (1 ảnh ngang + 2 ảnh cạnh nhau) thay vì 3 ảnh chồng to quá khổ.
+     Mọi số tính theo % của bảng nên ở 768 vẫn ra đúng số Figma. */
+  @media (width >= 30rem) {
+    .graphics {
+      min-block-size: 0;
+      padding-block-end: 93px;       /* [ƯỚC] giữ khoảng dưới như mobile */
+    }
+
+    .graphics__board {
+      --board-w: 704;                /* [FIGMA] tablet */
+      --board-h: 765;                /* [FIGMA] 414 + 26 + 325 */
+
+      margin-block-start: 44px;      /* [ĐO] ảnh y 3084 */
+    }
+
+    .graphics__img--wide { aspect-ratio: 704 / 414; } /* [FIGMA] */
+
+    .graphics__img--left,
+    .graphics__img--right {
+      float: left;
+      inline-size: calc(50% - 16px); /* [FIGMA] 336 */
+      margin-block-start: 26px;      /* [FIGMA] 3498 → 3524 */
+      aspect-ratio: 336 / 325;       /* [FIGMA] */
+    }
+
+    .graphics__img--right {
+      float: right;
+      inline-size: calc(50% - 18px); /* [FIGMA] 334 tại x 402 */
+      aspect-ratio: 334 / 325;       /* [FIGMA] */
+    }
+
+    .graphics__shape--star {         /* [FIGMA] 227 tại (271, 3177) */
+      inset-inline-start: calc(100% * 239 / var(--board-w));
+      inset-block-start: calc(100% * 93 / var(--board-h));
+      inline-size: calc(100% * 227 / var(--board-w));
+    }
+
+    .graphics__shape--butterfly {    /* [FIGMA] 147 × 151 tại (126, 3611) */
+      inset-inline-start: calc(100% * 94 / var(--board-w));
+      inset-block-start: calc(100% * 527 / var(--board-h));
+      inline-size: calc(100% * 147 / var(--board-w));
+    }
+
+    .graphics__shape--asterisk {     /* [FIGMA] 183 × 177 tại (477, 3598) */
+      inset-inline-start: calc(100% * 445 / var(--board-w));
+      inset-block-start: calc(100% * 514 / var(--board-h));
+      inline-size: calc(100% * 183 / var(--board-w));
+    }
+  }
+
+  @media (width >= 48rem) {
+    .graphics {
+      padding-block: 76px 0;
+      min-block-size: 1122px;        /* [FIGMA] tablet 3978 − 2856 */
+    }
+
+    .graphics__title {
+      margin-inline-start: 0;        /* [ĐO] */
+      font-size: 80px;               /* [FIGMA] */
+      line-height: 108px;            /* [FIGMA] 704 × 108 */
+    }
+
+  }
+
+  @media (width >= 64rem) {
+    .graphics { min-block-size: 1220px; }   /* [MẪU] Section 4 1440 × 1220 */
+
+    .graphics__board {
+      --board-w: 1055;               /* [ĐO] desktop 195 → 1250 */
+      --board-h: 854;                /* [ĐO] 414 + 26 + 414 */
+
+      margin-inline-start: 5px;      /* [ĐO] x 195 */
+    }
+
+    .graphics__title { margin-inline-start: 1px; } /* [ĐO] */
+
+    .graphics__shape { display: block; }
+
+    .graphics__img--wide { aspect-ratio: 1055 / 414; } /* [MẪU] unsplash 1055 × 414 */
+
+    .graphics__img--left,
+    .graphics__img--right {
+      inline-size: calc(50% - 13.5px); /* [ĐO] 514 */
+      aspect-ratio: 514 / 414;       /* [MẪU] Rectangle 6/7 514 × 414 */
+    }
+
+    .graphics__img--right { margin-inline-end: 1px; } /* [ĐO] x 735 → 1249 */
+
+    .graphics__shape--star {         /* [ĐO] 268 tại (586, 3151) */
+      inset-inline-start: calc(100% * 391 / var(--board-w));
+      inset-block-start: calc(100% * 67 / var(--board-h));
+      inline-size: calc(100% * 268 / var(--board-w));
+    }
+
+    .graphics__shape--butterfly {    /* [ĐO] 187 × 192 tại (359, 3635) */
+      inset-inline-start: calc(100% * 164 / var(--board-w));
+      inset-block-start: calc(100% * 551 / var(--board-h));
+      inline-size: calc(100% * 187 / var(--board-w));
+    }
+
+    .graphics__shape--asterisk {     /* [ĐO] 233 × 225 tại (876, 3618) */
+      inset-inline-start: calc(100% * 681 / var(--board-w));
+      inset-block-start: calc(100% * 534 / var(--board-h));
+      inline-size: calc(100% * 233 / var(--board-w));
+    }
+  }
+}

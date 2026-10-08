@@ -1,0 +1,250 @@
+/* Section 3: thẻ dự án lớn + dải thẻ cuộn ngang + chấm chỉ vị trí.
+   Dải thẻ: track dịch trái theo tâm khung (calc(50% − n)) nên ở cả 3 khung
+   thẻ rơi đúng chỗ Figma; phần còn lại cuộn ngang được (overflow-x: auto). */
+@layer components {
+  .projects {
+    padding-block: 52px 59px;        /* [ĐO] mobile: 1266 → thẻ 1318; chấm → 2472 */
+    background-color: var(--surface-projects);
+  }
+
+  /* ---------- Thẻ (dùng chung) ---------- */
+  .project {
+    --project-pad: 12px;             /* [FIGMA] mobile Frame 20 padding 12 */
+
+    position: relative;
+    padding: var(--project-pad);
+    color: var(--text-card-body);
+    white-space: normal;
+    background-color: var(--surface-card);
+    border-radius: var(--radius-card);
+  }
+
+  .project__media {
+    position: relative;
+    isolation: isolate;
+    block-size: 363px;               /* [FIGMA] mobile 319 × 363 */
+    overflow: hidden;
+    background-color: #d9d9d9;       /* [FIGMA] */
+    border-radius: var(--radius-media);
+  }
+
+  .project__img {
+    position: absolute;
+    inset: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    max-inline-size: none;
+    object-fit: cover;               /* [ĐO] Figma "Fill": phủ kín, canh giữa */
+  }
+
+  /* Ảnh export đã cắt sẵn phần đang thấy trong Figma (216 / 384 px). */
+  .project__img--end,
+  .project__img--start {
+    inline-size: auto;
+    object-fit: none;
+  }
+
+  .project__img--end { inset-inline-start: auto; }
+
+  .project__img--start { inset-inline-end: auto; }
+
+  /* Hai thẻ này chỉ có ảnh export đã cắt 216 / 384 px (phần Figma đang thấy).
+     Khi cuộn hoặc màn > 1440, phần còn thiếu được lấp bằng chính ảnh đó
+     phóng to + làm mờ, thay cho mảng xám. Cần ảnh đầy đủ từ khách. */
+  .project__media--partial::before {
+    content: "";
+    position: absolute;
+    inset: -40px;
+    z-index: -1;
+    background: var(--media-fill) center / cover no-repeat;
+    filter: blur(24px);
+  }
+
+  .project__media--fan { --media-fill: url("../../assets/img/project-mobile-app-crop.png"); }
+  .project__media--sphere { --media-fill: url("../../assets/img/project-banking-crop.png"); }
+
+  .project__title {
+    margin-block-start: 19px;        /* [ĐO] gap 10 + phần đệm trên của dòng chữ */
+    font-weight: var(--weight-bold);
+    font-size: 24px;                 /* [FIGMA] mobile */
+    line-height: 29px;               /* [FIGMA] */
+    color: var(--text-card-title);
+  }
+
+  /* Cả thẻ bấm được: vùng bấm phủ cả thẻ, chữ vẫn chọn được. */
+  .project__link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-card);
+  }
+
+  .project__link:focus-visible { outline: none; }
+
+  .project:has(.project__link:focus-visible) {
+    outline: 2px solid var(--accent-stroke);
+    outline-offset: 3px;
+  }
+
+  .project__text {
+    margin-block-start: 23px;        /* [ĐO] tiêu đề → mô tả */
+    font-size: 15px;                 /* [FIGMA] mobile */
+    line-height: 20px;               /* [FIGMA] */
+  }
+
+  /* ---------- Thẻ lớn ---------- */
+  .project--featured {
+    --project-pad: 16px;             /* [FIGMA] mobile Frame 18 padding 16 */
+  }
+
+  .project--featured .project__media {
+    block-size: min(498px, (100vw - 64px) * 278 / 311); /* [FIGMA] mobile 311 × 278; giữ tỉ lệ khi màn rộng hơn */
+  }
+
+  /* Ảnh thẻ nhỏ ở mobile: Figma giữ nguyên cỡ ảnh 384 × 448, chỉ cắt giữa. */
+  .carousel .project__img {
+    object-fit: none;
+    object-position: right top;      /* [ĐO] nút mũi tên vẫn cách mép 20 như Figma */
+  }
+
+  .carousel .project__img--fill { object-fit: cover; } /* [MẪU] ảnh cắt đúng khung Mobile */
+
+  .project--featured .project__title {
+    margin-block-start: 21px;        /* [ĐO] mobile */
+    font-weight: var(--weight-semibold);
+    font-size: 32px;                 /* [FIGMA] mobile */
+    line-height: 38px;               /* [FIGMA] 76 / 2 dòng */
+  }
+
+  .project--featured .project__text {
+    margin-block-start: 22px;        /* [ĐO] mobile */
+    font-weight: var(--weight-bold); /* [FIGMA] Manrope 700 */
+  }
+
+  /* ---------- Dải thẻ ---------- */
+  .carousel {
+    margin-block-start: 55px;        /* [ĐO] mobile 1806 → 1861 */
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+  }
+
+  .carousel::-webkit-scrollbar { display: none; }
+
+  .carousel:focus-visible {
+    outline: 2px solid var(--accent-stroke);
+    outline-offset: -2px;
+  }
+
+  .carousel {
+    --slide: min(343px, calc(100vw - 32px)); /* [FIGMA] mobile 343; [ƯỚC] < 375 vừa màn */
+  }
+
+  .carousel__track {
+    margin: 0;
+    margin-inline-start: max(calc(50% - 517.5px), calc(10px - var(--slide))); /* [FIGMA] mobile Frame 32 x −330; thẻ 2 không lọt khỏi mép trái */
+    padding: 0;
+    font-size: 0;
+    white-space: nowrap;
+    list-style: none;
+  }
+
+  .carousel__slide {
+    display: inline-block;
+    inline-size: var(--slide);
+    vertical-align: top;
+  }
+
+  .carousel__slide + .carousel__slide { margin-inline-start: 6px; } /* [FIGMA] mobile gap 6 */
+
+  .carousel__slide .project { min-block-size: 518px; } /* [FIGMA] mobile 343 × 518 */
+
+  /* ---------- Chấm ---------- */
+  .dots {
+    margin-block-start: 22px;        /* [ĐO] mobile 2380 → 2402 */
+    font-size: 0;
+    line-height: 0;
+    text-align: center;
+    padding-inline-start: 2px;       /* [ĐO] mobile: nhóm chấm lệch phải 1px so với tâm */
+  }
+
+  .dots__item {
+    display: inline-block;
+    inline-size: 11px;               /* [FIGMA] Ellipse 11 × 11 */
+    block-size: 11px;
+    background-color: var(--color-cream);
+    border-radius: 5.5px;            /* [FIGMA] */
+  }
+
+  .dots__item + .dots__item { margin-inline-start: 7px; } /* [FIGMA] gap 7 */
+
+  .dots__item--active {
+    inline-size: 33px;               /* [FIGMA] Rectangle 14 — 33 × 11 */
+    background-color: var(--color-yellow);
+  }
+
+  @media (width >= 48rem) {
+    .projects { padding-block: 52px 81px; } /* [ĐO] tablet/desktop: chấm 2775 → 2856 */
+
+    .project { --project-pad: 20px; } /* [FIGMA] Frame 23/24 padding 20 */
+
+    .project__media { block-size: 448px; } /* [FIGMA] 384 × 448 */
+
+    .project__title {
+      margin-block-start: 21px;      /* [ĐO] */
+      font-size: 32px;               /* [FIGMA] */
+      line-height: 38px;             /* [FIGMA] */
+    }
+
+    .project__text {
+      max-inline-size: 364px;        /* [FIGMA] 364 × 66 */
+      margin-block-start: 21px;      /* [ĐO] */
+      font-size: 16px;               /* [FIGMA] */
+      line-height: 22px;             /* [FIGMA] */
+    }
+
+    .project--featured {
+      margin-inline-start: 1px;      /* [FIGMA] tablet x 33 */
+      padding: 24px 20px;            /* [FIGMA] Frame 18 padding 24/20 */
+    }
+
+    .project--featured .project__media { block-size: 498px; } /* [FIGMA] 663 × 498 */
+
+    .project--featured .project__title {
+      margin-block-start: 20px;      /* [ĐO] */
+      font-size: 40px;               /* [FIGMA] */
+      line-height: 48px;             /* [FIGMA] */
+    }
+
+    .project--featured .project__text {
+      max-inline-size: 580px;        /* [FIGMA] */
+      margin-block-start: 22px;      /* [ĐO] */
+    }
+
+    .carousel { margin-block-start: 102px; } /* [ĐO] 1998 → 2100 */
+
+    .carousel .project__img { object-position: center; }
+
+    .carousel { --slide: 424px; }     /* [FIGMA] 424 × 634 */
+
+    .carousel__track { margin-inline-start: calc(50% - 908px); } /* [ĐO] thẻ 2 ở x −60 (tablet) / 276 (desktop) */
+
+    .carousel__slide + .carousel__slide { margin-inline-start: 40px; } /* [ĐO] */
+
+    .carousel__slide .project { min-block-size: 634px; } /* [FIGMA] */
+
+    .dots {
+      margin-block-start: 30px;      /* [ĐO] 2734 → 2764 */
+      padding-inline-start: 0;
+    }
+  }
+
+  @media (width >= 64rem) {
+    .dots { padding-inline-end: 2px; } /* [ĐO] desktop: lệch trái 1px */
+
+    .project--featured {
+      inline-size: calc(100% - 10px); /* [ĐO] 1050 ở container 1060 */
+      margin-inline-start: 5px;      /* [ĐO] x 195 */
+    }
+  }
+}

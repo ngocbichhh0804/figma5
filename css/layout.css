@@ -1,0 +1,30 @@
+/* Cấu trúc cấp trang: container. Không flex/grid/gap.
+
+   Breakpoint (min-width, rem):
+     < 48rem      điện thoại — khung Figma Mobile 375
+     48rem        tablet     — khung Figma Tablet 768
+     64rem        laptop     — bố cục desktop, container co giãn
+     90rem        desktop    — khung Figma Desktop 1440, container 1060 canh giữa */
+@layer layout {
+  .container {
+    inline-size: calc(100% - 2 * var(--gutter));
+    max-inline-size: 1060px;         /* [ĐO] 190 → 1250 ở khung 1440 */
+    margin-inline: auto;
+
+    --gutter: 16px;                  /* [ĐO] lề khung Mobile */
+  }
+
+  .page {
+    position: relative;
+    isolation: isolate;
+    overflow: clip;
+  }
+
+  @media (width >= 48rem) {
+    .container { --gutter: 32px; }   /* [ĐO] lề khung Tablet */
+  }
+
+  @media (width >= 64rem) {
+    .container { --gutter: 48px; }   /* [ƯỚC] laptop — Figma không vẽ khổ này */
+  }
+}
